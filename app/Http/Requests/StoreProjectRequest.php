@@ -26,9 +26,9 @@ class StoreProjectRequest extends FormRequest
             'description' => 'required',
             'cover_image' => 'file|max:1024|nullable|mimes:jpg,bmp,png',
             'thumbnail' => 'nullable',
-            'technologies' => 'required',
             'link' => 'required',
-            'type_id' => 'nullable|exists:types,id'
+            'type_id' => 'nullable|exists:types,id',
+            'technologies' => 'nullable|exists:technology,id'
         ];
     }
 
@@ -41,7 +41,6 @@ class StoreProjectRequest extends FormRequest
             'description.required' => 'Devi inserire una descrizione',
             'cover_image.mimes' => "Il file deve essere un'immagine",
             'cover_image.max' => "La dimensione del file non deve superare i 1024 KB",
-            'technologies.required' => 'Devi inserire le tecnologie usate',
             'link' => 'Devi inserire il link del progetto'
         ];
     }

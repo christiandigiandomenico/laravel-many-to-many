@@ -6,14 +6,18 @@
     <div class="container py-5">
         <h1 class="mb-5">{{$project->name}}</h1>
         <small>{{$project->type?->title}}</small>
+
+        <div class="d-flex gap-2 mb-5">
+          @foreach ($project->technologies as $technology)
+          <span class="badge rounded-pill text-bg-info">{{$technology->title}}</span>
+          @endforeach
+        </div>
     
         {{-- @dump($comic) --}}
 
                 <p>{{$project->description}}</p>
 
                 <img src="{{asset('storage/' . $project->cover_image)}}" alt="Immagine Progetto">
-
-                <p>{{$project->technologies}}</p>
 
                 <a href="">{{$project->link}}</a>
     

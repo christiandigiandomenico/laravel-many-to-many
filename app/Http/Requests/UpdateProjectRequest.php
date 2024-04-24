@@ -22,7 +22,7 @@ class UpdateProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'technologies' => 'nullable|exists:technology,id',
         ];
     }
 }
