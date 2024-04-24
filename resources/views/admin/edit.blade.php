@@ -72,6 +72,39 @@
             </select>
 
         </div>
+
+        <div class="mb-4">
+            <label class="mb-2" for="">Tecnologie</label>
+            <div class="d-flex gap-4">
+
+                @foreach($technologies as $technology)
+                <div class="form-check ">
+                    <input 
+                        type="checkbox" 
+                        name="technologies[]"
+                        value="{{$technology->id}}" 
+                        class="form-check-input" 
+                        id="tag-{{$technology->id}}"
+                        
+                        {{-- controlliamo se sono presenti errori (stiamo probabilmente ricevendo dei parametri old() ) --}}
+                        {{-- se abbiamo errori e quindi old() --}}  
+                        @if($errors->any())
+
+                        {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}
+
+                        @else 
+
+                        {{-- {{ $project->tags->contains($technology) ? 'checked' : '' }} --}}
+                        
+                        @endif
+                    > 
+                    
+                    <label for="tag-{{$technology->id}}" class="form-check-label">{{$technology->title}}</label>
+                </div>
+                @endforeach
+
+            </div>
+        </div>
         
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
